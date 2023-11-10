@@ -1,0 +1,12 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.bg-dolphins-green {
+    background-color: #008C95; /* This is a close approximation to Miami Dolphins green */
+    /* Additional styling */
+}
+.bg-none {
+    background-color: transparent;
+    /* Additional styling */
+}
