@@ -11,16 +11,17 @@ class PickGames extends Component
     public $picks = [];
     public $availablePoints = [];
     public $disabledPoints = [];
+    public $week;
+    public $weeks = [];
 
     public function mount()
     {
-        $this->games = Games::all();
+        // get games where week = $week
+        
+        // get weeks
+        $this->games = Games::where('week_number', $this->week)->get();
         $this->resetAvailablePoints();
-
-        $this->games = Games::with(['homeTeam', 'awayTeam'])->get()->each(function ($game) {
-            $game->homeTeam->colors = json_decode($game->homeTeam->colors, true);
-            $game->awayTeam->colors = json_decode($game->awayTeam->colors, true);
-        });
+        
     }
 
     public function selectWinner($gameId, $team)
@@ -31,6 +32,10 @@ class PickGames extends Component
     
     $this->picks[$gameId]['winner'] = $team;
     $this->resetAvailablePoints(); // Call this if you need to update available points upon team selection
+}
+
+public function changeWeek($week){
+    $this->week = $week;
 }
 
 public function updateAvailablePoints($gameId)
@@ -63,6 +68,12 @@ public function savePicks()
 
     public function render()
     {
-        return view('livewire.pick-games');
+        $this->games = Games::where('week_number', $this->week)->get();
+        $this->weeks = Games::select('week_number')->distinct()->get();
+        
+        return view('livewire.pick-games', [
+            'games' => $this->games,
+            'weeks' => $this->weeks,
+        ]);
     }
 }
