@@ -13,7 +13,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::view('/', 'welcome');
+Route::view('/', 'dashboard');
+
+// about to pages/about.blade.php
+Route::view('about', 'pages.about');
+Route::view('registration', 'pages.registration');
+Route::view('rules', 'pages.rules');
+Route::view('teams', 'pages.teams');
+Route::view('payouts', 'pages.payouts');
 
 Route::view('dashboard', 'dashboard')
     ->middleware(['auth', 'verified'])
@@ -22,6 +29,10 @@ Route::view('dashboard', 'dashboard')
 Route::view('profile', 'profile')
     ->middleware(['auth'])
     ->name('profile');
+
+Route::get('picks', \App\Livewire\PickGames::class)
+    ->middleware(['auth'])
+    ->name('picks');
 
 Route::get('/upload-games', \App\Livewire\CsvUpload::class)->name('admin.upload-games');
 
