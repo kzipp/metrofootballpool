@@ -27,7 +27,7 @@
                 </button>
                 {{-- an input form under the button to enter the awayScore of this game --}}
                 {{-- if role is admin --}}
-                @if (auth()->user()->role === 'admin')
+                @if (auth()->user()->role === 'superadmin')
                 <input type="number" 
                     wire:model.blur="picks.{{ $game->id }}.awayScore"
                     class="w-16 text-center border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-gray-400 focus:border-transparent"
@@ -45,7 +45,7 @@
                         alt="{{ $game->homeTeam->city }} {{ $game->homeTeam->name }}" 
                         class="w-8 h-8 inline-block mr-2">
                 </button>
-                @if (auth()->user()->role === 'admin')
+                @if (auth()->user()->role === 'superadmin')
                 <input type="number" 
                 wire:model.blur="picks.{{ 
                     $game->id
