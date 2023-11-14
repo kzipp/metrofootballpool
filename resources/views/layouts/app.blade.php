@@ -27,6 +27,8 @@
                 <div class="flex space-x-4">
                     <a href="/"
                         class="py-2 px-4 text-gray-700 rounded hover:bg-gray-200 dark:hover:bg-gray-700 focus:outline-none focus:bg-gray-200 dark:focus:bg-gray-700 text-sm">Home</a>
+                    <a href="upload-games" 
+                        class="py-2 px-4 text-gray-700 rounded hover:bg-gray-200 dark:hover:bg-gray-700 focus:outline-none focus:bg-gray-200 dark:focus:bg-gray-700 text-sm">Upload Games</a>
                     {{-- about --}}
                     <a href="about"
                         class="py-2 px-4 text-gray-700 rounded hover:bg-gray-200 dark:hover:bg-gray-700 focus:outline-none focus:bg-gray-200 dark:focus:bg-gray-700 text-sm">About</a>
@@ -39,9 +41,6 @@
                     <a href="teams"
                         class="py-2 px-4 text-gray-700 rounded hover:bg-gray-200 dark:hover:bg-gray-700 focus:outline-none focus:bg-gray-200 dark:focus:bg-gray-700 text-sm">NFL Teams</a>
                         {{-- schedule --}}
-                    {{-- standings --}}
-                    <a href="picks"
-                        class="py-2 px-4 text-gray-700 rounded hover:bg-gray-200 dark:hover:bg-gray-700 focus:outline-none focus:bg-gray-200 dark:focus:bg-gray-700 text-sm">Picks</a>
                     <a href="#"
                         class="py-2 px-4 text-gray-700 rounded hover:bg-gray-200 dark:hover:bg-gray-700 focus:outline-none focus:bg-gray-200 dark:focus:bg-gray-700 text-sm">Main Standings</a>
                         <a href="#"

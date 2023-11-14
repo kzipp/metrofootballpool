@@ -19,10 +19,25 @@ class PickGames extends Component
         // get games where week = $week
         
         // get weeks
+        
+        if($this->week == null){
+            $this->week = Games::select('week_number')->get()->last()->week_number;
+        }
         $this->games = Games::where('week_number', $this->week)->get();
         $this->resetAvailablePoints();
+
+        // if ($this->week == null) { set it to the last week in the database }
+        
         
     }
+
+    // if picks.gameid.awayScore is changed, update the Games database, if picks.gameid.homeScore is changed, update the Games database
+    public function updated()
+    {
+    //   dd("Welcome back. YOu're in the right spot. Do something about updating the score right on the picks page. The input is there but not working yet.");
+
+    }
+   
 
     public function selectWinner($gameId, $team)
 {
@@ -70,6 +85,8 @@ public function savePicks()
     {
         $this->games = Games::where('week_number', $this->week)->get();
         $this->weeks = Games::select('week_number')->distinct()->get();
+
+        
         
         return view('livewire.pick-games', [
             'games' => $this->games,

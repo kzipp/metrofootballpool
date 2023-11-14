@@ -16,6 +16,11 @@ class CsvUpload extends Component
     public $csvFile;
     public $games = [];
 
+    public function mount()
+    {
+        $this->weekNumber = Games::select('week_number')->distinct()->get()->last()->week_number + 1;
+    }
+
     public function render()
     {
         return view('livewire.csv-upload');
@@ -35,6 +40,8 @@ class CsvUpload extends Component
             $game->home_team = $row[1];
             // gameorder 
             $game->gameorder = $row[2];
+            // if the game is a wager game it is marked as "yes" in 3rd column
+            $game->wagergame = $row[3] == 'yes' ? true : false;
             // thats it for now
             $game->week_number = $this->weekNumber;
             $game->season_year = Carbon::now()->year;

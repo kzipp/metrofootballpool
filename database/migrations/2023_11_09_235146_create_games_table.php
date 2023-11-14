@@ -15,7 +15,11 @@ return new class extends Migration
             $table->id();
             $table->string('away_team');
             $table->string('home_team');
-            $table->timestamp('game_date')->nullable();
+            // game_date is a date string in the format of 'YYYY-MM-DD'
+            $table->date('game_date')->nullable();
+            $table->string('game_time')->nullable();
+            // wagergame is a boolean that indicates whether or not the game is a wager game
+            $table->boolean('wagergame')->default(false);
             // gameorder is the order in which the games are played in a given week
             $table->unsignedInteger('gameorder');
             //awayscore and home score

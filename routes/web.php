@@ -22,6 +22,11 @@ Route::view('rules', 'pages.rules');
 Route::view('teams', 'pages.teams');
 Route::view('payouts', 'pages.payouts');
 
+// csv-template route that points to a .csv file
+Route::get('csv-template', function () {
+    return response()->download(public_path('csv-template.csv'));
+})->name('csv-template');
+
 Route::view('dashboard', 'dashboard')
     ->middleware(['auth', 'verified'])
     ->name('dashboard');
